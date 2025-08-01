@@ -141,6 +141,10 @@ struct CupView: View {
     }
 }
 
+// 預覽整體
+#Preview {
+    ContentView()
+}
 
 // 預覽每個杯子的狀態
 #Preview("Drink") {
