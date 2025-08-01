@@ -89,13 +89,13 @@ struct CupView: View {
                     Image(systemName: type.systemImageName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 120)
-                        .foregroundColor(.gray.opacity(0.2))
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.gray.opacity(0.8))
 
                     // 水波層
                     if intakeAmount > 0 {
                         WaveView(progress: progress, phase: wavePhase, color: type.color.opacity(0.5))
-                            .frame(width: 60, height: 100)
+                            .frame(width: 100, height: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .blendMode(.plusLighter)
                             .allowsHitTesting(false)
@@ -107,9 +107,8 @@ struct CupView: View {
                     if intakeAmount > 0 {
                         Text("\(Int(intakeAmount))ml")
                             .font(.system(size: 12, weight: .bold))
-                            .foregroundColor(.white)
+                            .foregroundColor(.gray)
                             .padding(4)
-                            .background(Color.black.opacity(0.5))
                             .cornerRadius(5)
                             .padding(.bottom, 10)
                     }

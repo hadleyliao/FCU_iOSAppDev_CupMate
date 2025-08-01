@@ -13,7 +13,7 @@ enum DrinkType: String, CaseIterable, Identifiable {
         case .drink:
             return Color.blue.opacity(0.3)
         case .coffee:
-            return Color.red.opacity(0.3)
+            return Color.brown
         case .water:
             return Color.blue.opacity(0.3)
         case .soup:
