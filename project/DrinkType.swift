@@ -1,3 +1,6 @@
+// MARK: - DrinkType.swift
+// 飲品類型枚舉，定義各種飲品的屬性和特徵
+
 import SwiftUI
 
 enum DrinkType: String, CaseIterable, Identifiable {
@@ -6,56 +9,61 @@ enum DrinkType: String, CaseIterable, Identifiable {
     case water = "水杯"
     case soup = "湯碗"
 
+    // 實現 Identifiable 協議，用於 ForEach 迴圈
     var id: String { self.rawValue }
 
+    // MARK: - 顏色配置
+    // 功能：為每種飲品類型定義專屬顏色
     var color: Color {
         switch self {
         case .drink:
-            return Color.pink.opacity(0.3)
+            return Color.pink.opacity(0.3)      // 粉紅色（飲料）
         case .coffee:
-            return Color.brown.opacity(0.8)
+            return Color.brown.opacity(0.8)     // 棕色（咖啡）
         case .water:
-            return Color.blue.opacity(0.3)
+            return Color.blue.opacity(0.3)      // 藍色（水）
         case .soup:
-            return Color.yellow.opacity(0.3)
+            return Color.yellow.opacity(0.3)    // 黃色（湯）
         }
     }
 
-    // 容器形狀
+    // MARK: - 圖示配置
+    // 功能：為每種飲品類型指定對應的 SF Symbol 圖示
     var systemImageName: String {
         switch self {
         case .drink:
-            return "wineglass.fill"
+            return "wineglass.fill"                        // 酒杯圖示
         case .coffee:
-            return "cup.and.saucer.fill"
+            return "cup.and.saucer.fill"                   // 咖啡杯和茶碟圖示
         case .water:
-            return "mug.fill"
+            return "mug.fill"                              // 馬克杯圖示
         case .soup:
-            return "takeoutbag.and.cup.and.straw.fill"
+            return "takeoutbag.and.cup.and.straw.fill"     // 外帶餐飲圖示
         }
     }
 
+    // MARK: - 容量配置
+    // 功能：定義每種容器的最大容量（毫升）
+    // 注意：目前程式中未使用此屬性，但為未來擴展功能預留
     var maxCapacity: Double {
         switch self {
         case .drink:
-            return 1000
+            return 1000     // 飲料杯：1000ml
         case .coffee:
-            return 500
+            return 500      // 咖啡杯：500ml
         case .water:
-            return 1500
+            return 1500     // 水杯：1500ml
         case .soup:
-            return 800
+            return 800      // 湯碗：800ml
         }
     }
 }
 
-
-// 預覽整體
+// MARK: - 預覽
 #Preview {
     ContentView()
 }
 
-// 預覽每個杯子的狀態
 #Preview("Drink") {
     CupView(type: .drink, intakeAmount: 1000)
 }
