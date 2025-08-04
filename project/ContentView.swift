@@ -5,30 +5,10 @@
 //  Created by 訪客使用者 on 2025/8/1.
 //
 
-//import SwiftUI
-//
-//struct ContentView: View {
-//    var body: some View {
-//        VStack {
-//            Image(systemName: "humidity")
-//                .font(.system(size: 100))
-//                .foregroundColor(.cyan)
-//            Text("DROP!")
-//                .font(.system(size: 50, weight: .bold))
-//                .foregroundColor(.cyan)
-//        }
-//        .padding()
-//    }
-//}
-//
-//#Preview {
-//    ContentView()
-//}
-
-
 import SwiftUI
 
 struct ContentView: View {
+    // 管理各種飲品的攝取量
     @State private var intakeDict: [DrinkType: Double] = [
         .drink: 0,
         .coffee: 0,
@@ -56,7 +36,7 @@ struct ContentView: View {
             Text("\(Int(totalIntake)) / \(Int(dailyGoal)) ml")
                 .font(.headline)
 
-            // 四個杯子
+            // 四個杯子，由 LazyVGrid 排列，並分別載入 CupView
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
                 ForEach(DrinkType.allCases) { type in
                     CupView(type: type, intakeAmount: intakeDict[type] ?? 0)
