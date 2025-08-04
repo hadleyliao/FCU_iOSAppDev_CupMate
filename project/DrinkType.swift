@@ -11,9 +11,9 @@ enum DrinkType: String, CaseIterable, Identifiable {
     var color: Color {
         switch self {
         case .drink:
-            return Color.green.opacity(0.3)
+            return Color.pink.opacity(0.3)
         case .coffee:
-            return Color.brown
+            return Color.brown.opacity(0.8)
         case .water:
             return Color.blue.opacity(0.3)
         case .soup:
