@@ -1,10 +1,10 @@
-# 🧊 飲水記錄應用程式 (CupMate)
-
-一個美觀且功能豐富的 iOS 飲水記錄應用程式，使用 SwiftUI 開發，具有動態水波動畫和杯子搖晃效果。
-
 ![App Demo](https://img.shields.io/badge/Platform-iOS%2015%2B-blue)
 ![Swift Version](https://img.shields.io/badge/Swift-5.0-orange)
 ![SwiftUI](https://img.shields.io/badge/UI-SwiftUI-green)
+
+# 🧊 飲水記錄應用程式 (CupMate)
+
+一個美觀且功能豐富的 iOS 飲水記錄應用程式，使用 SwiftUI 開發，具有動態水波動畫和杯子搖晃效果。
 
 ## ✨ 功能特色
 
