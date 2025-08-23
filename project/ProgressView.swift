@@ -83,3 +83,4 @@ struct ProgressPage: View {
         dailyGoal: 3000
     )
 }
+
