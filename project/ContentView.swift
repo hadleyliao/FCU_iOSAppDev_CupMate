@@ -39,8 +39,9 @@ struct ContentView: View {
                 Image(systemName: "humidity")
                     .font(.system(size: 50))
                     .foregroundColor(.cyan)
-                Text("本日飲水量")
+                Text("今日飲水量")
                     .font(.title)
+                    .bold()
                 Text("\(Int(totalIntake)) / \(Int(dailyGoal)) ml")
                     .font(.headline)
                 
@@ -52,11 +53,9 @@ struct ContentView: View {
                         CupView(type: type, intakeAmount: intakeDict[type] ?? 0)
                     }
                 }
-                
-                Divider() // 分隔線
-                
+                                
                 // MARK: - 輸入控制區域
-                VStack(spacing: 10) {
+                VStack(spacing: 30) {
                     // 飲品類型選擇器，使用分段控制器樣式
                     Picker("選擇飲料", selection: $selectedDrink) {
                         ForEach(DrinkType.allCases) { type in
@@ -102,6 +101,11 @@ struct ContentView: View {
                 .tabItem {
                     Label("進度", systemImage: "chart.pie.fill")
                 }
+            // 第3頁：提醒功能
+                        ReminderView() // 這裡要有 ReminderView.swift
+                            .tabItem {
+                                Label("提醒", systemImage: "bell") // 這裡加上你的 Label
+                            }
         }
     }
 }

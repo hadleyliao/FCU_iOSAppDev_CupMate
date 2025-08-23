@@ -10,40 +10,48 @@ struct ProgressPage: View {
     }
 
     var body: some View {
-        VStack(spacing: 80) {
-            Text("今日飲水進度")
-                .font(.title)
-                .bold()
-
-            ZStack {
-                Circle()
-                    .stroke(Color.gray.opacity(0.2), lineWidth: 30)
-
-                // 四種飲品的環形
-                ForEach(Array(intakeDict.keys.enumerated()), id: \.element) { index, drink in
-                    let startAngle = startAngle(for: index)
-                    let endAngle = startAngle + Angle(degrees: 360 * (intakeDict[drink]! / max(totalIntake, dailyGoal)))
-                    
+        TabView {
+            
+            VStack(spacing: 30) {
+                Image(systemName: "humidity")
+                    .font(.system(size: 50))
+                    .foregroundColor(.cyan)
+                Text("今日飲水進度")
+                    .font(.title)
+                    .bold()
+                
+                Spacer().frame(height: 30)
+                
+                ZStack {
                     Circle()
-                        .trim(from: CGFloat(startAngle.degrees / 360), to: CGFloat(endAngle.degrees / 360))
-                        .stroke(color(for: drink), style: StrokeStyle(lineWidth: 30, lineCap: .round))
-                        .rotationEffect(.degrees(-90))
-                        .animation(.easeOut(duration: 1), value: intakeDict[drink])
-                }
-
-                VStack {
-                    Text("\(Int(totalIntake))/\(Int(dailyGoal)) ml")
-                        .font(.title2)
-                        .bold()
+                        .stroke(Color.gray.opacity(0.2), lineWidth: 30)
                     
-                    // 百分比顯示
-                    ForEach(Array(intakeDict.keys), id: \.self) { drink in
-                        Text("\(drink.rawValue.capitalized): \(Int((intakeDict[drink]! / max(totalIntake, dailyGoal)) * 100))%")
-                            .font(.subheadline)
+                    // 四種飲品的環形
+                    ForEach(Array(intakeDict.keys.enumerated()), id: \.element) { index, drink in
+                        let startAngle = startAngle(for: index)
+                        let endAngle = startAngle + Angle(degrees: 360 * (intakeDict[drink]! / max(totalIntake, dailyGoal)))
+                        
+                        Circle()
+                            .trim(from: CGFloat(startAngle.degrees / 360), to: CGFloat(endAngle.degrees / 360))
+                            .stroke(color(for: drink), style: StrokeStyle(lineWidth: 30, lineCap: .round))
+                            .rotationEffect(.degrees(-90))
+                            .animation(.easeOut(duration: 1), value: intakeDict[drink])
+                    }
+                    
+                    VStack {
+                        Text("\(Int(totalIntake))/\(Int(dailyGoal)) ml")
+                            .font(.title2)
+                            .bold()
+                        
+                        // 百分比顯示
+                        ForEach(Array(intakeDict.keys), id: \.self) { drink in
+                            Text("\(drink.rawValue.capitalized): \(Int((intakeDict[drink]! / max(totalIntake, dailyGoal)) * 100))%")
+                                .font(.subheadline)
+                        }
                     }
                 }
+                .frame(width: 280, height: 280)
             }
-            .frame(width: 280, height: 280)
         }
         .padding()
     }
