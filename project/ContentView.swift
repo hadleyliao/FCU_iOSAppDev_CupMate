@@ -56,6 +56,7 @@ struct ContentView: View {
                                 
                 // MARK: - 輸入控制區域
                 VStack(spacing: 30) {
+
                     // 飲品類型選擇器，使用分段控制器樣式
                     Picker("選擇飲料", selection: $selectedDrink) {
                         ForEach(DrinkType.allCases) { type in
