@@ -15,7 +15,7 @@ struct WaveView: View {
         GeometryReader { geo in
             let width = geo.size.width      // 容器寬度
             let height = geo.size.height    // 容器高度
-            let waveHeight: CGFloat = 6     // 波浪振幅（波峰到波谷的高度）
+            let waveHeight: CGFloat = 5    // 波浪振幅（波峰到波谷的高度）
             
             // MARK: - 波浪路徑繪製
             // 功能：使用 Path 動態繪製波浪形狀
@@ -44,4 +44,26 @@ struct WaveView: View {
         }
         .clipped()  // 裁剪超出邊界的部分
     }
+}
+
+// MARK: - 預覽
+#Preview {
+    ContentView()
+}
+
+// MARK: - 單獨杯子預覽
+#Preview("Drink") {
+    CupView(type: .drink, intakeAmount: 1000)
+}
+
+#Preview("Coffee") {
+    CupView(type: .coffee, intakeAmount: 1000)
+}
+
+#Preview("Water") {
+    CupView(type: .water, intakeAmount: 1000)
+}
+
+#Preview("Soup") {
+    CupView(type: .soup, intakeAmount: 900)
 }

@@ -97,6 +97,7 @@ struct CupView: View {
     ContentView()
 }
 
+// MARK: - 單獨杯子預覽
 #Preview("Drink") {
     CupView(type: .drink, intakeAmount: 1000)
 }
