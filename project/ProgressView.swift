@@ -11,9 +11,17 @@ struct ProgressPage: View {
 
     var body: some View {
         VStack(spacing: 30) {
-            Image(systemName: "humidity")
-                .font(.system(size: 50))
-                .foregroundColor(.cyan)
+            HStack {
+                Image(systemName: "humidity")
+                    .font(.system(size: 50))
+                    .foregroundColor(.cyan)
+
+                Text("Cup Mate 日日飲")
+                    .font(.title)
+                    .foregroundColor(.cyan)
+                    .bold()
+            }
+
             Text("今日飲水進度")
                 .font(.title)
                 .bold()

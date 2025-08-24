@@ -51,14 +51,14 @@ struct CupView: View {
 
                     // MARK: - 數值顯示
                     // 當有攝取量時顯示具體數值
-                    if intakeAmount > 0 {
-                        Text("\(Int(intakeAmount))ml")
-                            .font(.system(size: 12, weight: .bold))
-                            .foregroundColor(.gray)
-                            .padding(4)
-                            .cornerRadius(5)
-                            .padding(.bottom, 10)
-                    }
+//                    if intakeAmount > 0 {
+//                        Text("\(Int(intakeAmount))ml")
+//                            .font(.system(size: 12, weight: .bold))
+//                            .foregroundColor(.gray)
+//                            .padding(4)
+//                            .cornerRadius(5)
+//                            .padding(.bottom, 10)
+//                    }
                 }
                 // MARK: - 搖晃動畫效果
                 .rotationEffect(.degrees(shake ? 2 : -2))  // 左右搖擺 2 度
@@ -83,9 +83,9 @@ struct CupView: View {
                 }
 
                 // MARK: - 容器名稱標籤
-                Text(type.rawValue)
-                    .font(.system(size: 18))
-                    .foregroundColor(.brown)
+//                Text(type.rawValue)
+//                    .font(.system(size: 18))
+//                    .foregroundColor(.brown)
             }
         }
         .frame(width: 100, height: 160)  // 固定杯子視圖大小
