@@ -39,10 +39,16 @@ struct ReminderView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-                    Image(systemName: "humidity")
-                        .font(.system(size: 50))
-                        .foregroundColor(.cyan)
-                        .padding(.bottom, 8)
+                    HStack {
+                        Image(systemName: "humidity")
+                            .font(.system(size: 50))
+                            .foregroundColor(.cyan)
+
+                        Text("Cup Mate 日日飲")
+                            .font(.title)
+                            .foregroundColor(.cyan)
+                            .bold()
+                    }
                     // 開啟提醒總開關
                     HStack {
                         Text("喝水提醒設定")
@@ -57,7 +63,7 @@ struct ReminderView: View {
                     }
                     .padding(.bottom, 10)
 
-                    // 工作日（上移且有開關，預設Mon-Fri：1~5）
+                    // 工作日（預設Mon-Fri：1~5）
                     GroupBox(label: HStack {
                         Label("工作日", systemImage: "calendar")
                         Toggle("", isOn: $workdayEnabled)
