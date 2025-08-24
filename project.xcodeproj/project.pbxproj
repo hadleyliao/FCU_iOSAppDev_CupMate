@@ -50,6 +50,11 @@
 			path = projectUITests;
 			sourceTree = "<group>";
 		};
+		FEA42EF62E5B8F3600F8B0C1 /* images */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = images;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +85,7 @@
 		ACE3842C2E3C4F1E00916F71 = {
 			isa = PBXGroup;
 			children = (
+				FEA42EF62E5B8F3600F8B0C1 /* images */,
 				AC776B9B2E40640700DA2E6C /* README.md */,
 				ACE384372E3C4F1E00916F71 /* project */,
 				ACE384492E3C4F2000916F71 /* projectTests */,
@@ -115,6 +121,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				ACE384372E3C4F1E00916F71 /* project */,
+				FEA42EF62E5B8F3600F8B0C1 /* images */,
 			);
 			name = project;
 			packageProductDependencies = (
