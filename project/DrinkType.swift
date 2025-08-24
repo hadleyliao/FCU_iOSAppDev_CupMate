@@ -8,6 +8,7 @@ enum DrinkType: String, CaseIterable, Identifiable {
     case coffee = "咖啡杯"
     case water = "水杯"
     case soup = "湯碗"
+    
 
     // 實現 Identifiable 協議，用於 ForEach 迴圈
     var id: String { self.rawValue }
@@ -17,13 +18,13 @@ enum DrinkType: String, CaseIterable, Identifiable {
     var color: Color {
         switch self {
         case .drink:
-            return Color.pink.opacity(0.3)      // 粉紅色（飲料）
+            return Color.pink.opacity(0.5)     // 粉紅色（飲料）
         case .coffee:
             return Color.brown.opacity(0.8)     // 棕色（咖啡）
         case .water:
-            return Color.blue.opacity(0.3)      // 藍色（水）
+            return Color.blue.opacity(0.7)      // 藍色（水）
         case .soup:
-            return Color.yellow.opacity(0.3)    // 黃色（湯）
+            return Color.yellow.opacity(0.5)    // 黃色（湯）
         }
     }
 
@@ -55,6 +56,7 @@ enum DrinkType: String, CaseIterable, Identifiable {
             return 1500     // 水杯：1500ml
         case .soup:
             return 800      // 湯碗：800ml
+            
         }
     }
 }
@@ -66,17 +68,21 @@ enum DrinkType: String, CaseIterable, Identifiable {
 
 // MARK: - 單獨杯子預覽
 #Preview("Drink") {
-    CupView(type: .drink, intakeAmount: 1000)
+    CupView(type: .drink, intakeAmount: 1200)
+        .scaleEffect(3) // 放大 3 倍
 }
 
 #Preview("Coffee") {
     CupView(type: .coffee, intakeAmount: 1000)
+        .scaleEffect(3) // 放大 3 倍
 }
 
 #Preview("Water") {
     CupView(type: .water, intakeAmount: 1000)
+        .scaleEffect(3) // 放大 3 倍
 }
 
 #Preview("Soup") {
     CupView(type: .soup, intakeAmount: 900)
+        .scaleEffect(3) // 放大 3 倍
 }

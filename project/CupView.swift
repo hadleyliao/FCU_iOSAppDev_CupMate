@@ -84,8 +84,8 @@ struct CupView: View {
 
                 // MARK: - 容器名稱標籤
                 Text(type.rawValue)
-                    .font(.caption)
-                    .foregroundColor(.primary)
+                    .font(.system(size: 18))
+                    .foregroundColor(.brown)
             }
         }
         .frame(width: 100, height: 160)  // 固定杯子視圖大小
@@ -99,17 +99,21 @@ struct CupView: View {
 
 // MARK: - 單獨杯子預覽
 #Preview("Drink") {
-    CupView(type: .drink, intakeAmount: 1000)
+    CupView(type: .drink, intakeAmount: 1200)
+        .scaleEffect(3) // 放大 3 倍
 }
 
 #Preview("Coffee") {
     CupView(type: .coffee, intakeAmount: 1000)
+        .scaleEffect(3) // 放大 3 倍
 }
 
 #Preview("Water") {
     CupView(type: .water, intakeAmount: 1000)
+        .scaleEffect(3) // 放大 3 倍
 }
 
 #Preview("Soup") {
     CupView(type: .soup, intakeAmount: 900)
+        .scaleEffect(3) // 放大 3 倍
 }

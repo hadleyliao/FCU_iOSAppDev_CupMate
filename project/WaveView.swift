@@ -53,17 +53,21 @@ struct WaveView: View {
 
 // MARK: - 單獨杯子預覽
 #Preview("Drink") {
-    CupView(type: .drink, intakeAmount: 1000)
+    CupView(type: .drink, intakeAmount: 1200)
+        .scaleEffect(3) // 放大 3 倍
 }
 
 #Preview("Coffee") {
     CupView(type: .coffee, intakeAmount: 1000)
+        .scaleEffect(3) // 放大 3 倍
 }
 
 #Preview("Water") {
     CupView(type: .water, intakeAmount: 1000)
+        .scaleEffect(3) // 放大 3 倍
 }
 
 #Preview("Soup") {
     CupView(type: .soup, intakeAmount: 900)
+        .scaleEffect(3) // 放大 3 倍
 }
