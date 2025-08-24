@@ -33,12 +33,14 @@ struct ReminderView: View {
 
     let days = ["一","二","三","四","五","六","日"] // 1: 一, 2: 二 ...
 
-    var highlightColor: Color { notificationEnabled ? .blue : .gray }
+    // 將高亮色改為 cyan，且根據開關決定是否使用灰色
+    var highlightColor: Color { notificationEnabled ? .cyan : .gray }
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
+                    // Logo與標題，皆改成 cyan
                     HStack {
                         Image(systemName: "humidity")
                             .font(.system(size: 50))
@@ -49,6 +51,7 @@ struct ReminderView: View {
                             .foregroundColor(.cyan)
                             .bold()
                     }
+
                     // 開啟提醒總開關
                     HStack {
                         Text("喝水提醒設定")
@@ -58,7 +61,8 @@ struct ReminderView: View {
                         Toggle(isOn: $notificationEnabled) {
                             Image(systemName: notificationEnabled ? "bell.fill" : "bell.slash.fill")
                         }
-                        .toggleStyle(SwitchToggleStyle(tint: .blue))
+                        // 將藍色 toggle 改為 cyan
+                        .toggleStyle(SwitchToggleStyle(tint: .cyan))
                         .labelsHidden()
                     }
                     .padding(.bottom, 10)
@@ -68,12 +72,13 @@ struct ReminderView: View {
                         Label("工作日", systemImage: "calendar")
                         Toggle("", isOn: $workdayEnabled)
                             .labelsHidden()
+                            // 這裡也用 highlightColor，以便根據主開關變色
                             .toggleStyle(SwitchToggleStyle(tint: highlightColor))
                     }) {
                         WeekdayPicker(
                             selectedDays: $activeWeekdays,
                             disabled: !notificationEnabled || !workdayEnabled,
-                            highlightColor: highlightColor
+                            highlightColor: highlightColor // 這裡 highlightColor 會是 cyan
                         )
                     }
                     .disabled(!notificationEnabled)
@@ -103,6 +108,7 @@ struct ReminderView: View {
                                     )) {
                                         EmptyView()
                                     }
+                                    // 將 Toggle 顏色設為 cyan
                                     .labelsHidden()
                                     .toggleStyle(SwitchToggleStyle(tint: highlightColor))
                                     .disabled(!notificationEnabled || (period.enabled && workPeriods.filter{$0.enabled}.count == 1))
@@ -116,7 +122,8 @@ struct ReminderView: View {
                                 }
                             }
                             Button("新增工作區段") { showAddWorkPeriod = true }
-                                .foregroundColor(notificationEnabled ? .blue : .gray)
+                                // 新增按鈕顏色也改成 cyan
+                                .foregroundColor(notificationEnabled ? .cyan : .gray)
                                 .disabled(!notificationEnabled)
                         }
                     }
@@ -127,18 +134,20 @@ struct ReminderView: View {
                         HStack {
                             Picker("每隔", selection: $intervalHour) {
                                 ForEach(0..<4) { Text("\($0)小時") }
-                            }.frame(width: 80)
+                            }.frame(width: 100)
+                            // 這裡會跟隨 highlightColor 變色
                             .accentColor(highlightColor)
                             .disabled(!notificationEnabled)
+
                             Picker("", selection: $intervalMinute) {
                                 ForEach([0, 15, 30, 45], id: \.self) { Text("\($0)分鐘") }
-                            }.frame(width: 80)
+                            }.frame(width: 100)
                             .accentColor(highlightColor)
                             .disabled(!notificationEnabled)
                         }
-                        Text("每隔 \(intervalHour)小時\(intervalMinute)分鐘提醒一次")
-                            .font(.caption)
-                            .foregroundColor(.gray)
+//                        Text("每隔 \(intervalHour)小時\(intervalMinute)分鐘提醒一次")
+//                            .font(.caption)
+//                            .foregroundColor(.gray)
                     }
                     .disabled(!notificationEnabled)
 
@@ -172,7 +181,8 @@ struct ReminderView: View {
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(notificationEnabled ? Color.blue : Color.gray)
+                            // 這裡將背景色由 .blue 改為 .cyan
+                            .background(notificationEnabled ? Color.cyan : Color.gray)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -190,7 +200,8 @@ struct ReminderView: View {
                                         Text(timeString(from: date))
                                             .padding(.vertical, 2)
                                             .padding(.horizontal, 12)
-                                            .background(Capsule().fill(Color.blue.opacity(0.18)))
+                                            // 這裡 Capsule 的背景由 .blue 改為 .cyan
+                                            .background(Capsule().fill(Color.cyan.opacity(0.18)))
                                     }
                                 }
                             }
@@ -206,7 +217,6 @@ struct ReminderView: View {
                 }
                 .padding()
             }
-
             .sheet(isPresented: $showAddWorkPeriod) {
                 WorkPeriodPicker { start, end in
                     if start < end {
@@ -264,7 +274,7 @@ struct ReminderView: View {
 struct WeekdayPicker: View {
     @Binding var selectedDays: Set<Int>
     var disabled: Bool = false
-    var highlightColor: Color = .blue
+    var highlightColor: Color = .cyan // 預設改為 cyan
     let days = ["一","二","三","四","五","六","日"]
     var body: some View {
         HStack(spacing: 6) {
@@ -276,6 +286,7 @@ struct WeekdayPicker: View {
                 }) {
                     Text(days[i-1])
                         .font(.subheadline)
+                        // 高亮色由 blue 改為 cyan
                         .frame(width: 28, height: 28)
                         .background(selectedDays.contains(i) ? highlightColor : Color.gray.opacity(0.3))
                         .foregroundColor(.white)
