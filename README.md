@@ -32,7 +32,8 @@
 - **本地通知**：結合 UNUserNotificationCenter 實現喝水提醒
 
 ## 📱 畫面截圖
-
+![APP畫面](images/AppIcon&Name.png)
+![過場畫面](images/CupMateStoryBoard.png)
 ![主畫面](images/1.png)
 ![主畫面](images/2.png)
 ![進度條](images/3.png)
