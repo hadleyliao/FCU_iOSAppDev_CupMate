@@ -46,7 +46,7 @@ struct ReminderView: View {
                             .font(.system(size: 50))
                             .foregroundColor(.cyan)
 
-                        Text("Cup Mate 日日飲")
+                        Text("CupMate 日日飲")
                             .font(.title)
                             .foregroundColor(.cyan)
                             .bold()

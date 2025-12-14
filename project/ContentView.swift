@@ -29,7 +29,7 @@ struct ContentView: View {
                             .font(.system(size: 50))
                             .foregroundColor(.cyan) // 標題圖示顏色
 
-                        Text("Cup Mate 日日飲")
+                        Text("CupMate 日日飲")
                             .font(.title)
                             .foregroundColor(.cyan) // 標題文字顏色
                             .bold()
